@@ -1,0 +1,5 @@
+<h2>{{data.text}}</h2>
+<div class="buttons">
+  <button mat-flat-button (click)="bottomSheetRef.dismiss(false)">{{data.cancelLabel}}</button>
+  <button mat-flat-button color="primary" (click)="bottomSheetRef.dismiss(true)">{{data.okLabel}}</button>
+</div>

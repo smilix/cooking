@@ -1,0 +1,28 @@
+@import '~@angular/material/theming';
+
+.cat-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.cat-item.mat-list-item {
+  @include mat-elevation(1);
+  $margin: 2px;
+  margin: $margin $margin 12px;
+
+  @media screen and (min-width: 750px) {
+    width: calc(50% - #{$margin * 2});
+  }
+}
+
+.edit-footer {
+  display: flex;
+  margin-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 12px;
+
+  .spacer {
+    flex-grow: 2;
+  }
+}

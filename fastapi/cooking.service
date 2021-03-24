@@ -1,0 +1,20 @@
+[Unit]
+Description=Cooking
+After=network.target
+
+[Service]
+Type=simple
+User=smile
+Group=smile
+ExecStart=/home/smile/cooking/app/venv/bin/python3 -u app/venv/bin/uvicorn --host 127.0.0.1 --port 9120 --app-dir app/src main:app
+WorkingDirectory=/home/smile/cooking
+Environment="PYTHONUNBUFFERED=1"
+
+StandardOutput=journal
+StandardError=journal
+
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

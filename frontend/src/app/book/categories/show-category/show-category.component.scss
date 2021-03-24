@@ -1,0 +1,29 @@
+.mat-form-field {
+  width: 100%;
+}
+
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe {
+  width:300px;
+  margin: 12px;
+  cursor: pointer;
+
+  .recipe-image {
+    min-height: 180px; // for loading
+  }
+}
+
+.edit-footer {
+  display: flex;
+  margin-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 12px;
+
+  .spacer {
+    flex-grow: 2;
+  }
+}

@@ -1,0 +1,80 @@
+<button mat-button routerLink="../">
+  <mat-icon>west</mat-icon>
+  Zurück
+</button>
+
+<ng-container *ngIf="!form; else editModeTpl">
+
+  <ng-container *ngIf="category; else loading">
+
+    <h1 class="mat-h1">
+      {{category.name}}
+    </h1>
+    <p>
+      {{category.description}}
+    </p>
+
+    <div class="recipe-list">
+      <mat-card class="recipe" *ngFor="let r of recipes" [routerLink]="[r.id]" matRipple>
+        <mat-card-header>
+          <mat-card-title>{{r.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="r | recipeImg" class="recipe-image">
+        <mat-card-content>
+          <ng-template [ngIf]="r.sub_title" [ngIfElse]="description">
+            {{r.sub_title | first:40}}
+          </ng-template>
+          <ng-template #description>
+            {{r.description | first:40}}
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+    <div class="edit-footer">
+      <button mat-button color="accent" routerLink="new">
+        <mat-icon>add</mat-icon>
+        Neues Rezept
+      </button>
+      <span class="spacer"></span>
+      <button mat-button color="warn" (click)="delete()">
+        <mat-icon>delete</mat-icon>
+        Löschen
+      </button>
+      <button mat-button (click)="startEdit()">
+        <mat-icon>edit</mat-icon>
+        Ändern
+      </button>
+    </div>
+
+  </ng-container>
+  <ng-template #loading>
+    <app-waiting></app-waiting>
+  </ng-template>
+
+
+</ng-container>
+
+<ng-template #editModeTpl>
+  <form [formGroup]="form!!">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Beschreibung</mat-label>
+      <input matInput formControlName="description"/>
+    </mat-form-field>
+  </form>
+
+  <div class="edit-footer">
+    <button mat-raised-button (click)="cancelEdit()">Abbrechen</button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="primary" [disabled]="!form?.valid" (click)="save()">Speichern</button>
+  </div>
+
+</ng-template>
+

@@ -1,0 +1,111 @@
+<button mat-button routerLink="../">
+  <mat-icon>west</mat-icon>
+  Zurück
+</button>
+
+<div class="recipe">
+
+  <ng-container *ngIf="!form; else editModeTpl">
+
+    <ng-container *ngIf="recipe; else loading">
+
+      <h1>{{recipe.name}}</h1>
+      <p *ngIf="recipe.sub_title">{{recipe.sub_title}}</p>
+
+      <div class="preview">
+        <img [src]="recipe | recipeImg:450"/>
+      </div>
+
+
+      <div class="main-content">
+        <div class="ingredients">
+          <h2>Zutaten</h2>
+          <div [innerHTML]="recipe.ingredients | markdown"></div>
+        </div>
+
+        <div class="description">
+          <h2>Beschreibung</h2>
+          <div [innerHTML]="recipe.description | markdown"></div>
+        </div>
+      </div>
+
+      <ng-container *ngIf="recipe.source as s">
+        <h3>Quelle</h3>
+        <a [href]="s" *ngIf="sourceIsLink else plain">{{s}}</a>
+        <ng-template #plain>
+          <div>{{s}}</div>
+        </ng-template>
+      </ng-container>
+
+      <div class="edit-footer">
+        <div class="upload-button">
+          <input #fileInput type="file" (change)="startUpload(fileInput)" accept="image/*" capture>
+          <button mat-button (click)="fileInput.click()">
+            <mat-icon>photo_camera</mat-icon>
+            Foto hochladen
+          </button>
+        </div>
+        <span class="spacer"></span>
+        <button mat-button color="warn" (click)="delete()">
+          <mat-icon>delete</mat-icon>
+          Löschen
+        </button>
+        <button mat-button (click)="startEdit()">
+          <mat-icon>edit</mat-icon>
+          Ändern
+        </button>
+      </div>
+
+    </ng-container>
+
+    <ng-template #loading>
+      <app-waiting></app-waiting>
+    </ng-template>
+
+  </ng-container>
+
+  <ng-template #editModeTpl>
+    <form [formGroup]="form!!">
+
+      <mat-form-field>
+        <mat-label>Kategorie</mat-label>
+        <mat-select formControlName="category_id">
+          <mat-option *ngFor="let c of categoriesQuery.selectAll() | async" [value]="c.id">{{c.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Untertitel</mat-label>
+        <input type="text" matInput formControlName="sub_title"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Zutaten</mat-label>
+        <textarea matInput formControlName="ingredients"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Beschreibung</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Quelle</mat-label>
+        <input type="text" matInput formControlName="source"/>
+      </mat-form-field>
+
+
+    </form>
+
+    <div class="edit-footer">
+      <button mat-raised-button (click)="cancelEdit()">Abbrechen</button>
+      <span class="spacer"></span>
+      <button mat-raised-button color="primary" [disabled]="!form?.valid" (click)="save()">Speichern</button>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,56 @@
+.recipe {
+  border: 1px solid rgba(0, 0, 0, .12);
+  border-radius: 4px;
+  background: #ffffff;
+  margin: 16px;
+  padding: 12px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.main-content {
+  @media screen and (min-width: 750px) {
+    display: flex;
+    flex-wrap: wrap;
+
+    .ingredients {
+      max-width: 33%;
+      flex-basis: 33%;
+    }
+
+    .description {
+      max-width: 66%;
+      flex-basis: 66%;
+    }
+  }
+}
+
+textarea {
+  height: 300px;
+}
+
+.edit-footer {
+  display: flex;
+  margin-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 12px;
+
+  .spacer {
+    flex-grow: 2;
+  }
+}
+
+.preview {
+  text-align: center;
+  min-height: 250px; // for loading
+}
+
+.upload-button {
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+}

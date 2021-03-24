@@ -1,0 +1,21 @@
+<ng-container *ngIf="categoriesQuery.selectLoading(); else loading">
+  <mat-nav-list class="cat-list">
+    <a mat-list-item *ngFor="let c of categoriesQuery.selectAll() | async" [routerLink]="[c.id]" class="cat-item">
+      <mat-icon mat-list-icon>source</mat-icon>
+      <div mat-line>{{c.name}}</div>
+      <div mat-line> {{c.description}} </div>
+    </a>
+  </mat-nav-list>
+
+  <div class="edit-footer">
+    <button mat-button color="accent" routerLink="new">
+      <mat-icon>add</mat-icon>
+      Neue Kategorie
+    </button>
+    <span class="spacer"></span>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-waiting></app-waiting>
+</ng-template>

@@ -1,0 +1,35 @@
+<div class="app-container">
+
+  <mat-toolbar color="primary" class="toolbar">
+    <!--    <button mat-icon-button (click)="snav.toggle()">-->
+    <!--      <mat-icon>menu</mat-icon>-->
+    <!--    </button>-->
+    <button mat-icon-button routerLink="categories">
+<!--      <mat-icon></mat-icon>-->
+      <img src="assets/chef.svg" class="app-logo">
+      <span class="app-name">Cooking</span>
+    </button>
+
+<!--    <h1 class="app-name"><a mat-button routerLink="categories">Cooking</a></h1>-->
+
+    <ng-container *ngIf="sessionQuery.isLoggedIn$| async; else loginBlock">
+      <span class="spacer"></span>
+      <a mat-button routerLink="session/logout">Logout</a>
+    </ng-container>
+    <ng-template #loginBlock>
+      <span class="spacer"></span>
+      <a mat-button routerLink="session/">Login</a>
+    </ng-template>
+
+  </mat-toolbar>
+
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+
+  <div class="footer mat-small">
+    <a href="https://github.com/smilix/cooking">https://github.com/smilix/cooking</a>
+  </div>
+</div>
