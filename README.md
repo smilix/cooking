@@ -1,8 +1,10 @@
 # Cooking
 
+A small web application that contains recipes.
+
 ## TODO
 
-* [ ] Deployment
 * [ ] Search
 * [ ] Dockerfile for build/run
+* [ ] Translation
 * [ ] version output
