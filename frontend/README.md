@@ -1,9 +1,19 @@
 # Frontend of Cooking
 
-# Build
+## Dev
+
+Run develop version with
 
 ```shell
-ng build --prod
+npm ci
+npm run start
+```
+
+## Build
+
+```shell
+npm ci
+npm run build
 # build app will be found in ../fastapi/static
 ```
 

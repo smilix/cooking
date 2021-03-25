@@ -1,3 +1,3 @@
 #!/bin/bash
 
-( cd frontend && ng build --prod )
+( cd frontend && npm run build )
