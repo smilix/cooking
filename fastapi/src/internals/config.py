@@ -15,7 +15,8 @@ class Settings(BaseSettings):
     csrf_token_cookie_name: str = "XSRF-TOKEN"
     csrf_token_header_name: str = "X-XSRF-TOKEN"
 
-    secure_cookie: bool = False
+    # a secure default
+    secure_cookie: bool = True
 
     static_html_folder: str = "static"
     upload_folder: str
