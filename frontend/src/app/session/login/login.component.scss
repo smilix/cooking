@@ -1,8 +1,10 @@
+@import '~@angular/material/theming';
+
 :host {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60ex;
+  height: calc(100vh - 200px); // 100% - header - footer
 }
 
 .centered-card {

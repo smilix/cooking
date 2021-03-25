@@ -2,8 +2,12 @@
   border: 1px solid rgba(0, 0, 0, .12);
   border-radius: 4px;
   background: #ffffff;
-  margin: 16px;
   padding: 12px;
+  margin: 0;
+
+  @media screen and (min-width: 550px) {
+    margin: 16px;
+  }
 }
 
 .mat-form-field {
@@ -45,6 +49,10 @@ textarea {
 .preview {
   text-align: center;
   min-height: 250px; // for loading
+
+  img {
+    max-width: 85vw;
+  }
 }
 
 .upload-button {

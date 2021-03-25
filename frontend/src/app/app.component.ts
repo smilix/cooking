@@ -1,8 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {SessionService} from './session/state/session.service';
-import {Router} from '@angular/router';
-import {MediaMatcher} from '@angular/cdk/layout';
-import {MatSidenav} from '@angular/material/sidenav';
+import {Component} from '@angular/core';
 import {SessionQuery} from './session/state/session.query';
 
 @Component({
@@ -12,24 +8,6 @@ import {SessionQuery} from './session/state/session.query';
 })
 export class AppComponent {
 
-
-  // mobileQuery: MediaQueryList;
-
-  // @ViewChild('snav')
-  // private snav!: MatSidenav;
-
-  constructor(media: MediaMatcher,
-              public sessionQuery: SessionQuery,
-              private sessionService: SessionService,
-              private router: Router,
-  ) {
-    // this.mobileQuery = media.matchMedia('(max-width: 600px)');
+  constructor(public sessionQuery: SessionQuery) {
   }
-
-  checkClose(): void {
-    // if (this.mobileQuery.matches) {
-    //   this.snav.close();
-    // }
-  }
-
 }
