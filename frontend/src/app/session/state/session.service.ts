@@ -26,8 +26,6 @@ export class SessionService {
               private sessionQuery: SessionQuery,
               private http: HttpClient,
               private csrfToken: HttpXsrfTokenExtractor) {
-
-    this.checkSessionStatus().subscribe();
   }
 
   checkSessionStatus(): Observable<CheckSessionResponse> {

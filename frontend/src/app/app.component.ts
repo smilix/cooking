@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {SessionQuery} from './session/state/session.query';
+import {SessionService} from './session/state/session.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,9 @@ import {SessionQuery} from './session/state/session.query';
 })
 export class AppComponent {
 
-  constructor(public sessionQuery: SessionQuery) {
+  constructor(public sessionQuery: SessionQuery,
+              sessionService: SessionService) {
+
+    sessionService.checkSessionStatus().subscribe();
   }
 }
