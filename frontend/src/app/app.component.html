@@ -1,20 +1,29 @@
 <div class="app-container">
 
   <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button routerLink="categories">
+    <button mat-button routerLink="categories">
       <img src="assets/chef.svg" class="app-logo">
       <span class="app-name">Cooking</span>
     </button>
+    <span class="spacer"></span>
+
+    <button mat-button (click)="showSearch()">
+      <mat-icon>search</mat-icon>
+      Suchen
+    </button>
 
     <ng-container *ngIf="sessionQuery.isLoggedIn$| async; else loginBlock">
-      <span class="spacer"></span>
-      <a mat-button routerLink="session/logout">Logout</a>
+      <a mat-button routerLink="session/logout">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </a>
     </ng-container>
     <ng-template #loginBlock>
-      <span class="spacer"></span>
-      <a mat-button routerLink="session/">Login</a>
+      <a mat-button routerLink="session/">
+        <mat-icon>login</mat-icon>
+        Login
+      </a>
     </ng-template>
-
   </mat-toolbar>
 
 

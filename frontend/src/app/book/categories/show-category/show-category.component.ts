@@ -58,7 +58,7 @@ export class ShowCategoryComponent implements OnInit {
         }
       })
     ).subscribe(([category, recipes]) => {
-      console.log('loaded:', category, recipes);
+      // console.log('loaded:', category, recipes);
       // @ts-ignore
       this.category = category;
       // @ts-ignore

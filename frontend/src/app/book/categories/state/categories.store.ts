@@ -8,7 +8,7 @@ export interface CategoriesState extends EntityState<Category> {
 @Injectable({providedIn: 'root'})
 @StoreConfig({
   name: 'categories',
-  cache: {ttl: 3600000}
+  cache: {ttl: 3600000} // 1 hour in ms
 })
 export class CategoriesStore extends EntityStore<CategoriesState> {
 

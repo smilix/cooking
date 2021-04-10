@@ -11,15 +11,21 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {WaitingComponent} from './waiting/waiting.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {SearchComponent, SearchService} from './search/search.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {ReactiveFormsModule} from '@angular/forms';
+import {OverlayModule} from '@angular/cdk/overlay';
+import {A11yModule} from '@angular/cdk/a11y';
 
 
 @NgModule({
-  declarations: [FirstPipe, RecipeImgPipe, MarkdownPipe, ConfirmComponent, WaitingComponent],
+  declarations: [FirstPipe, RecipeImgPipe, MarkdownPipe, ConfirmComponent, WaitingComponent, SearchComponent],
   exports: [
     FirstPipe,
     RecipeImgPipe,
     MarkdownPipe,
     WaitingComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
@@ -29,9 +35,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatButtonModule,
     MatBottomSheetModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    OverlayModule,
   ],
   providers: [
-    ConfirmService
+    ConfirmService,
+    SearchService,
   ],
   entryComponents: [
     ConfirmComponent

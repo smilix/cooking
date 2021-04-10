@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {SessionQuery} from './session/state/session.query';
 import {SessionService} from './session/state/session.service';
+import {SearchService} from './shared/search/search.component';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,13 @@ import {SessionService} from './session/state/session.service';
 export class AppComponent {
 
   constructor(public sessionQuery: SessionQuery,
-              sessionService: SessionService) {
+              sessionService: SessionService,
+              private searchService: SearchService) {
 
     sessionService.checkSessionStatus().subscribe();
+  }
+
+  showSearch(): void {
+    this.searchService.showSearch();
   }
 }

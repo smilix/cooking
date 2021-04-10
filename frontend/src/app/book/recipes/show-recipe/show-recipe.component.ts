@@ -58,7 +58,7 @@ export class ShowRecipeComponent implements OnInit {
         ]);
       })
     ).subscribe(([category, r]) => {
-      console.log('loaded', category, r);
+      // console.log('loaded', category, r);
       this.category = category;
       this.recipe = r;
       this.sourceIsLink = r?.source?.startsWith('http') ?? false;

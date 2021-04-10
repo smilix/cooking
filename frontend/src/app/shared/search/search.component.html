@@ -1,0 +1,29 @@
+<div class="search-container" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+
+  <div class="block">
+
+    <mat-icon color="primary" class="search-icon">search</mat-icon>
+    <form [formGroup]="form">
+      <mat-form-field class="search-field">
+        <input type="text"
+               formControlName="search"
+               [matAutocomplete]="autoGroup"
+               [matAutocompleteConnectedTo]="origin"
+               matInput
+               #searchInput
+        >
+        <mat-autocomplete panelWidth="100%" #autoGroup="matAutocomplete"
+                          (optionSelected)="doSearch($event)">
+          <mat-optgroup *ngFor="let category of searchData | async" [label]="category.name">
+            <mat-option *ngFor="let recipe of category.recipes" [value]="[category.id, recipe.id]">
+              {{recipe.name}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <button mat-icon-button (click)="callback.onCancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

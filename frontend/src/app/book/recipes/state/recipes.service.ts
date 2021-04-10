@@ -1,22 +1,24 @@
 import {Injectable} from '@angular/core';
-import {NgEntityService, NgEntityServiceConfig} from '@datorama/akita-ng-entity-service';
+import {NgEntityServiceConfig} from '@datorama/akita-ng-entity-service';
 import {RecipesState, RecipesStore} from './recipes.store';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {tap} from 'rxjs/operators';
 import {Recipe} from './recipe.model';
+import {CachingNgEntityService} from '../../../shared/caching-ng-entity-service';
+import {RecipesQuery} from './recipes.query';
 
 @NgEntityServiceConfig({
   resourceName: 'recipes',
 })
 @Injectable({providedIn: 'root'})
-export class RecipesService extends NgEntityService<RecipesState> {
+export class RecipesService extends CachingNgEntityService<RecipesState> {
 
   constructor(
     protected store: RecipesStore,
+    recipesQuery: RecipesQuery
   ) {
-    super(store);
+    super(store, recipesQuery);
   }
 
   uploadImage(photo: File, recipeId: number): Observable<any> {
