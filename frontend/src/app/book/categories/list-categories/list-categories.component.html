@@ -1,6 +1,6 @@
 <ng-container *ngIf="categoriesQuery.selectLoading(); else loading">
   <mat-nav-list class="cat-list">
-    <a mat-list-item *ngFor="let c of categoriesQuery.selectAll() | async" [routerLink]="[c.id]" class="cat-item">
+    <a mat-list-item *ngFor="let c of categoriesQuery.selectAll() | async" [routerLink]="[c.id]" class="cat-item mat-elevation-z1">
       <mat-icon mat-list-icon>source</mat-icon>
       <div mat-line>{{c.name}}</div>
       <div mat-line> {{c.description}} </div>

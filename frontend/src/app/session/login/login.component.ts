@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {Credentials, ERR_INVALID_CREDENTIALS, SessionService} from '../state/session.service';
+import {Credentials, SessionService} from '../state/session.service';
 import {Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
 
