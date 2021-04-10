@@ -13,9 +13,11 @@
       <p *ngIf="recipe.sub_title">{{recipe.sub_title}}</p>
 
       <div class="preview">
-        <img [src]="recipe | recipeImg:450"/>
+        <app-waiting *ngIf="uploading; else image"></app-waiting>
+        <ng-template #image>
+          <img [src]="recipe | recipeImg:450"/>
+        </ng-template>
       </div>
-
 
       <div class="main-content">
         <div class="ingredients">

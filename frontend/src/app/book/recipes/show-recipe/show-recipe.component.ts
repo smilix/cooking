@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RecipesQuery} from '../state/recipes.query';
 import {RecipesService} from '../state/recipes.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {switchMap} from 'rxjs/operators';
+import {finalize, switchMap} from 'rxjs/operators';
 import {Recipe} from '../state/recipe.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {combineLatest, of} from 'rxjs';
@@ -10,6 +10,7 @@ import {CategoriesService} from '../../categories/state/categories.service';
 import {CategoriesQuery} from '../../categories/state/categories.query';
 import {Category} from '../../categories/state/category.model';
 import {ConfirmService} from '../../../shared/confirm/confirm.component';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
   selector: 'app-show-recipe',
@@ -22,10 +23,12 @@ export class ShowRecipeComponent implements OnInit {
   category?: Category;
 
   newMode = false;
+  uploading = false;
   sourceIsLink = false;
   form: FormGroup | null = null;
 
   constructor(
+    private viewportScroller: ViewportScroller,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -109,10 +112,15 @@ export class ShowRecipeComponent implements OnInit {
     if (!this.recipe) {
       return;
     }
-    const file = input.files[0];
+    this.uploading = true;
+    this.viewportScroller.scrollToPosition([0, 0]);
 
+    const file = input.files[0];
     console.log(file);
-    this.recipesService.uploadImage(file, this.recipe.id).subscribe();
+
+    this.recipesService.uploadImage(file, this.recipe.id).pipe(
+      finalize(() => this.uploading = false)
+    ).subscribe();
   }
 
   delete(): void {
