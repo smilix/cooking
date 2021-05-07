@@ -2,7 +2,7 @@ import os
 from glob import glob
 from typing import List, Optional
 
-from PIL import Image
+from PIL import Image, ImageOps
 from fastapi import APIRouter, Depends, HTTPException, UploadFile
 from fastapi.params import File
 from fastapi.responses import FileResponse
@@ -143,6 +143,7 @@ async def get_photo(
     with Image.open(photo_path) as img:
         if img.mode != "RGB":
             img = img.convert("RGB")
+        img = ImageOps.exif_transpose(img)
         img.thumbnail((size, size))
         img.save(thumb_path, format="WEBP", quality=80)
 
