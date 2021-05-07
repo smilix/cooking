@@ -1,11 +1,25 @@
 <ng-container *ngIf="categoriesQuery.selectLoading(); else loading">
-  <mat-nav-list class="cat-list">
-    <a mat-list-item *ngFor="let c of categoriesQuery.selectAll() | async" [routerLink]="[c.id]" class="cat-item mat-elevation-z1">
+  <mat-nav-list class="cat-list" *ngIf="!sortMode; else sortView">
+    <a mat-list-item *ngFor="let c of categoriesQuery.bySortIndex$ | async" [routerLink]="[c.id]" class="cat-item mat-elevation-z1">
       <mat-icon mat-list-icon>source</mat-icon>
       <div mat-line>{{c.name}}</div>
       <div mat-line> {{c.description}} </div>
     </a>
   </mat-nav-list>
+
+  <ng-template #sortView>
+    <div cdkDropList class="cat-sort-list"
+         (cdkDropListDropped)="drop($event)"
+         [cdkDropListDisabled]="updatingSorting" [class.disabled]="updatingSorting">
+      <div class="cat-sort-box" *ngFor="let c of localCategories"
+           cdkDrag (cdkDragStarted)="dragStarted()" (cdkDragEnded)="dragEnded()">
+        <mat-icon>source</mat-icon> {{c.name}}
+        <span class="spacer"></span>
+        ({{c.sort_index}})
+      </div>
+    </div>
+
+  </ng-template>
 
   <div class="edit-footer">
     <button mat-button color="accent" routerLink="new">
@@ -13,6 +27,19 @@
       Neue Kategorie
     </button>
     <span class="spacer"></span>
+
+    <button mat-button (click)="startSortMode()" *ngIf="!sortMode; else sortChange">
+      <mat-icon>sort</mat-icon>
+      Sortierung anpassen
+    </button>
+
+    <ng-template #sortChange>
+      <button mat-raised-button (click)="cancelSortChange()" [disabled]="updatingSorting">Abbrechen</button>
+      <button mat-raised-button color="primary" class="apply-sort-btn" (click)="applySortChange()"
+              [disabled]="updatingSorting">{{updatingSorting ? '...' : 'Sortierung Speichern'}}
+      </button>
+    </ng-template>
+
   </div>
 </ng-container>
 

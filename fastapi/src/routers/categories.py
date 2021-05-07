@@ -1,3 +1,4 @@
+import math
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends
@@ -19,7 +20,10 @@ router = APIRouter(
 def read_categories(
         db: Session = Depends(deps.get_db),
         current_user: models.User = Depends(deps.check_session_and_csrf)):
-    return crud.category.get_multi_by_owner(db, owner_id=current_user.id)
+    cats = crud.category.get_multi_by_owner(db, owner_id=current_user.id)
+    # for c in cats:
+    #     c.sort_index = math.floor(c.sort_index / 1000)
+    return cats
 
 
 @router.post("", response_model=schemas.Category)

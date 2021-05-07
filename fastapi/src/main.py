@@ -13,4 +13,4 @@ app.include_router(categories.router, prefix=prefix)
 app.include_router(recipes.router, prefix=prefix)
 app.include_router(docs.router)
 
-app.mount("/", StaticForAngular(directory=settings.static_html_folder, api_path_to_exclude="api/"), name="static")
+app.mount("/", StaticForAngular(directory=settings.static_html_folder, path_to_exclude=["api/", "docs/"]), name="static")

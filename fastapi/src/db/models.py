@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, Float
 
 from db.base_class import Base, WithOwnerMixin
 
@@ -13,6 +13,7 @@ class Category(Base, WithOwnerMixin):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     description = Column(String)
+    sort_index = Column(Integer, nullable=False, default=0)
     owner_id = Column(Integer, ForeignKey("user.id"))
 
 

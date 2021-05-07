@@ -15,6 +15,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRippleModule} from '@angular/material/core';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const routes: Routes = [
   {path: '', component: ListCategoriesComponent},
@@ -40,6 +41,7 @@ const routes: Routes = [
     MatInputModule,
     MatSelectModule,
     MatRippleModule,
+    DragDropModule,
   ]
 })
 export class BookModule {

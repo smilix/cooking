@@ -74,7 +74,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 class CRUDBaseWithOwner(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def __init__(self, model: Type[ModelType]):
         if not hasattr(model, "owner_id"):
-            raise BaseException("Invalid model, needs 'owner_id'.")
+            raise Exception("Invalid model, needs 'owner_id'.")
         self.model = model
 
     def create_with_owner(
