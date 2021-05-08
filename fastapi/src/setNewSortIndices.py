@@ -14,7 +14,7 @@ if __name__ == '__main__':
         categories.sort(key=lambda c: c.id)
         current = increment
         for cat in categories:
-            # print(f"{cat.id}, {cat.name}")
+            print(f"{cat.id}, {cat.sort_index}")
             update = CategoryUpdate()
             update.sort_index = current
             crud.category.update(db, db_obj=cat, obj_in=update)

@@ -32,6 +32,10 @@ def create_category(
         db: Session = Depends(deps.get_db),
         current_user: models.User = Depends(deps.check_session_and_csrf),
         category_in: schemas.CategoryCreate):
+    if not category_in.sort_index:
+        max_sort = crud.category.find_max_sort_index(db)
+        category_in.sort_index = max_sort + 1000
+    
     return crud.category.create_with_owner(db, obj_in=category_in, owner_id=current_user.id)
 
 
