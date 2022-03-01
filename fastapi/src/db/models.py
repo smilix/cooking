@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Float
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
 
 from db.base_class import Base, WithOwnerMixin
 
@@ -25,6 +25,7 @@ class Recipe(Base, WithOwnerMixin):
     description = Column(String)
     source = Column(String)
     photo = Column(String)
+    marked= Column(Boolean, nullable=False, default=False)
 
     owner_id = Column(Integer, ForeignKey("user.id"))
     category_id = Column(Integer, ForeignKey("category.id"), nullable=False)

@@ -8,6 +8,14 @@
   @media screen and (min-width: 550px) {
     margin: 16px;
   }
+
+  h1 {
+    display: flex;
+
+    button {
+      transform: scale(1.5);
+    }
+  }
 }
 
 .mat-form-field {

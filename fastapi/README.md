@@ -8,6 +8,8 @@ Run a local server with
 ./run-dev-server.sh
 ```
 
+Server runs on http://127.0.0.1:8000/ and API docs on http://127.0.0.1:8000/docs/
+
 ## Install
 
 Install requirements and create the venv:

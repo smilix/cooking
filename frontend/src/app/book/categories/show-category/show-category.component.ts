@@ -21,7 +21,7 @@ export class ShowCategoryComponent implements OnInit {
   category = {} as Category;
   recipes: Recipe[] = [];
 
-  newMode = false;
+  mode: 'EDIT' | 'NEW' | 'MARKED' = 'EDIT';
   form: FormGroup | null = null;
 
 
@@ -41,10 +41,22 @@ export class ShowCategoryComponent implements OnInit {
     this.activatedRoute.paramMap.pipe(
       switchMap(params => {
         const idValue = params.get('id');
-        this.newMode = idValue === 'new';
-        if (this.newMode) {
+        if (idValue === 'new') {
+          this.mode = 'NEW';
           return of([{} as Category, [] as Recipe[]]);
+        } else if (idValue === 'marked') {
+          this.mode = 'MARKED';
+          this.categoriesService.get().subscribe();
+          this.recipesService.get().subscribe();
+
+          return combineLatest([
+            of({
+              name: 'Marked Recipes'
+            } as Category),
+            this.recipesQuery.markedRecipes
+          ]);
         } else {
+          this.mode = 'EDIT';
           const id = parseInt(idValue!!, 10);
           this.categoriesService.get().subscribe();
           this.recipesService.get().subscribe();
@@ -64,7 +76,7 @@ export class ShowCategoryComponent implements OnInit {
       // @ts-ignore
       this.recipes = recipes;
 
-      if (this.newMode) {
+      if (this.mode === 'NEW') {
         this.startEdit();
       }
     });
@@ -80,7 +92,7 @@ export class ShowCategoryComponent implements OnInit {
 
   cancelEdit(): void {
     this.form = null;
-    if (this.newMode) {
+    if (this.mode === 'NEW') {
       this.router.navigate(['/categories']);
     }
   }
@@ -92,7 +104,7 @@ export class ShowCategoryComponent implements OnInit {
 
     console.log(this.form.value);
 
-    if (this.newMode) {
+    if (this.mode === 'NEW') {
       const model = {
         ...this.form.value,
       } as Category;

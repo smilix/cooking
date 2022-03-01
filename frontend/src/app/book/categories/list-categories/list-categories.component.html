@@ -1,5 +1,11 @@
 <ng-container *ngIf="categoriesQuery.selectLoading(); else loading">
   <mat-nav-list class="cat-list" *ngIf="!sortMode; else sortView">
+    <a mat-list-item routerLink="marked" class="cat-item mat-elevation-z1">
+      <mat-icon mat-list-icon>star</mat-icon>
+      <div mat-line>Marked Recipes</div>
+      <div mat-line> All Recipes that have been marked. </div>
+    </a>
+
     <a mat-list-item *ngFor="let c of categoriesQuery.bySortIndex$ | async" [routerLink]="[c.id]" class="cat-item mat-elevation-z1">
       <mat-icon mat-list-icon>source</mat-icon>
       <div mat-line>{{c.name}}</div>

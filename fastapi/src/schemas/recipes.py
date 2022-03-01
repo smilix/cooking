@@ -10,6 +10,7 @@ class RecipeBase(BaseModel):
     ingredients: Optional[str]
     source: Optional[str]
     category_id: int
+    marked: bool
 
 
 class RecipeCreate(RecipeBase):
@@ -19,6 +20,7 @@ class RecipeCreate(RecipeBase):
 class RecipeUpdate(RecipeBase):
     name: Optional[str]
     category_id: Optional[int]
+    marked: Optional[bool]
 
 
 class Recipe(RecipeCreate):

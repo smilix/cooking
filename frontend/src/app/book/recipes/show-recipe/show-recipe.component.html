@@ -9,7 +9,11 @@
 
     <ng-container *ngIf="recipe; else loading">
 
-      <h1>{{recipe.name}}</h1>
+      <h1>{{recipe.name}}
+        <button mat-icon-button color="accent" (click)="mark()">
+          <mat-icon>{{recipe.marked ? 'star' : 'star_outline'}}</mat-icon>
+        </button>
+      </h1>
       <p *ngIf="recipe.sub_title">{{recipe.sub_title}}</p>
 
       <div class="preview">

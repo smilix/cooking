@@ -7,4 +7,5 @@ export interface Recipe {
   source: string | null;
   photo: string | null;
   category_id?: number;
+  marked: boolean;
 }

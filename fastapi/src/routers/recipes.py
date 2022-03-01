@@ -66,7 +66,7 @@ def update_recipe(
         id: int,
         recipe_in: schemas.RecipeUpdate):
     recipe = _get(db, current_user.id, id)
-    if not recipe_in.category_id:
+    if recipe_in.category_id:
         _check_category(db, current_user.id, recipe_in.category_id)
 
     return crud.recipe.update(db, db_obj=recipe, obj_in=recipe_in)

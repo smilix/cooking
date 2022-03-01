@@ -137,4 +137,13 @@ export class ShowRecipeComponent implements OnInit {
       }
     );
   }
+
+  mark(): void {
+    if (!this.recipe) {
+      return;
+    }
+    this.recipesService.update(this.recipe!.id, {
+      marked: !this.recipe!.marked
+    }).subscribe();
+  }
 }

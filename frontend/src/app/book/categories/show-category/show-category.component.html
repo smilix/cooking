@@ -32,7 +32,7 @@
     </div>
 
 
-    <div class="edit-footer">
+    <div class="edit-footer" *ngIf="mode !== 'MARKED'">
       <button mat-button color="accent" routerLink="new">
         <mat-icon>add</mat-icon>
         Neues Rezept
