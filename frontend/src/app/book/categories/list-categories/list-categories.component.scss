@@ -18,6 +18,7 @@
 
 .edit-footer {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   padding-top: 12px;
@@ -32,9 +33,7 @@
 
 .cat-sort-list {
   margin: 20px auto;
-
-  width: 500px;
-  max-width: 100%;
+  max-width: 85%;
   border: solid 1px #ccc;
   min-height: 60px;
   display: block;

@@ -3,7 +3,7 @@
     <a mat-list-item routerLink="marked" class="cat-item mat-elevation-z1">
       <mat-icon mat-list-icon>star</mat-icon>
       <div mat-line>Marked Recipes</div>
-      <div mat-line> All Recipes that have been marked. </div>
+      <div mat-line> All Recipes that have been marked.</div>
     </a>
 
     <a mat-list-item *ngFor="let c of categoriesQuery.bySortIndex$ | async" [routerLink]="[c.id]" class="cat-item mat-elevation-z1">
@@ -19,7 +19,8 @@
          [cdkDropListDisabled]="updatingSorting" [class.disabled]="updatingSorting">
       <div class="cat-sort-box" *ngFor="let c of localCategories"
            cdkDrag (cdkDragStarted)="dragStarted()" (cdkDragEnded)="dragEnded()">
-        <mat-icon>source</mat-icon> {{c.name}}
+        <mat-icon>source</mat-icon>
+        {{c.name}}
         <span class="spacer"></span>
         ({{c.sort_index}})
       </div>
@@ -40,10 +41,12 @@
     </button>
 
     <ng-template #sortChange>
-      <button mat-raised-button (click)="cancelSortChange()" [disabled]="updatingSorting">Abbrechen</button>
-      <button mat-raised-button color="primary" class="apply-sort-btn" (click)="applySortChange()"
-              [disabled]="updatingSorting">{{updatingSorting ? '...' : 'Sortierung Speichern'}}
-      </button>
+      <div>
+        <button mat-raised-button (click)="cancelSortChange()" [disabled]="updatingSorting">Abbrechen</button>
+        <button mat-raised-button color="primary" class="apply-sort-btn" (click)="applySortChange()"
+                [disabled]="updatingSorting">{{updatingSorting ? '...' : 'Sortierung Speichern'}}
+        </button>
+      </div>
     </ng-template>
 
   </div>
