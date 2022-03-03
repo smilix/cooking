@@ -52,6 +52,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
     private categoriesQuery: CategoriesQuery,
     private recipesQuery: RecipesQuery,
     private categoriesService: CategoriesService,
@@ -77,8 +78,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
     ]).pipe(
       filter(([categories, recipes]) => categories.length > 0 && recipes.length > 0),
       map(([categories, recipes]) => {
-        console.log('do the map for', categories.length, recipes.length);
-
         const recipesMap = new Map<number, SearchRecipe[]>();
         recipes.forEach(r => {
           if (!r.category_id) {
@@ -138,6 +137,15 @@ export class SearchComponent implements OnInit, AfterViewInit {
   doSearch(event: MatAutocompleteSelectedEvent): void {
     const [catId, recipeId] = event.option.value;
     this.callback.onSelected(catId, recipeId);
+  }
+
+  doFullTextSearch(): void {
+    this.callback.onCancel();
+    this.router.navigate(['/search'], {
+      queryParams: {
+        q: this.searchInput.nativeElement.value
+      }
+    });
   }
 }
 

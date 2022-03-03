@@ -15,7 +15,7 @@ import {SearchComponent, SearchService} from './search/search.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {ReactiveFormsModule} from '@angular/forms';
 import {OverlayModule} from '@angular/cdk/overlay';
-import {A11yModule} from '@angular/cdk/a11y';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -29,6 +29,7 @@ import {A11yModule} from '@angular/cdk/a11y';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,

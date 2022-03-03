@@ -1,0 +1,28 @@
+<div class="search-area">
+  <mat-icon color="primary" class="search-icon">search</mat-icon>
+  <mat-form-field class="search-field">
+    <input type="search" [value]="searchFor" matInput #searchInput (keyup.enter)="doFullTextSearch(searchInput.value)">
+    <button mat-icon-button matSuffix (click)="doFullTextSearch(searchInput.value)">
+      <mat-icon>manage_search</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<ng-container *ngIf="result; else loading">
+  <mat-nav-list class="cat-list">
+    <a mat-list-item *ngFor="let r of result" [routerLink]="['/categories', r.category.id, r.recipe.id]" class="cat-item mat-elevation-z1">
+      <mat-icon mat-list-icon>restaurant</mat-icon>
+      <div mat-line><span class="recipe-name">{{r.recipe.name}}</span>
+        <span>{{r.recipe.sub_title | first:40}}</span>
+      </div>
+      <div mat-line>{{r.recipe.description | first:100}}</div>
+      <div mat-line>In <span class="category">{{r.category.name}}</span></div>
+    </a>
+  </mat-nav-list>
+
+
+</ng-container>
+
+<ng-template #loading>
+  <app-waiting></app-waiting>
+</ng-template>

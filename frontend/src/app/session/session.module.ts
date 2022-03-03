@@ -23,18 +23,19 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), MatProgressSpinnerModule, CommonModule],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  declarations: [LogoutComponent]
+  declarations: []
 })
 export class SessionRoutingModule {
 }
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, LogoutComponent],
   imports: [
     CommonModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,

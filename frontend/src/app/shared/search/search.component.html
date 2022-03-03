@@ -12,6 +12,9 @@
                matInput
                #searchInput
         >
+        <button mat-icon-button matSuffix (click)="doFullTextSearch()">
+          <mat-icon>manage_search</mat-icon>
+        </button>
         <mat-autocomplete panelWidth="100%" #autoGroup="matAutocomplete"
                           (optionSelected)="doSearch($event)">
           <mat-optgroup *ngFor="let category of searchData | async" [label]="category.name">
