@@ -10,7 +10,7 @@
     <ng-container *ngIf="recipe; else loading">
 
       <h1>{{recipe.name}}
-        <button mat-icon-button color="accent" (click)="mark()">
+        <button mat-icon-button color="primary" (click)="mark()">
           <mat-icon>{{recipe.marked ? 'star' : 'star_outline'}}</mat-icon>
         </button>
       </h1>
