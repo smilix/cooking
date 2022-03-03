@@ -51,7 +51,7 @@ export class ShowCategoryComponent implements OnInit {
 
           return combineLatest([
             of({
-              name: 'Marked Recipes'
+              name: 'Markierte Rezepte'
             } as Category),
             this.recipesQuery.markedRecipes
           ]);
