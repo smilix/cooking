@@ -14,7 +14,7 @@ class RecipeBase(BaseModel):
 
 
 class RecipeCreate(RecipeBase):
-    pass
+    marked: Optional[bool]
 
 
 class RecipeUpdate(RecipeBase):
