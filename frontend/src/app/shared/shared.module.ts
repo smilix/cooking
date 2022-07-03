@@ -19,33 +19,30 @@ import {RouterModule} from '@angular/router';
 
 
 @NgModule({
-  declarations: [FirstPipe, RecipeImgPipe, MarkdownPipe, ConfirmComponent, WaitingComponent, SearchComponent],
-  exports: [
-    FirstPipe,
-    RecipeImgPipe,
-    MarkdownPipe,
-    WaitingComponent,
-    SearchComponent,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatBottomSheetModule,
-    MatProgressSpinnerModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    OverlayModule,
-  ],
-  providers: [
-    ConfirmService,
-    SearchService,
-  ],
-  entryComponents: [
-    ConfirmComponent
-  ]
+    declarations: [FirstPipe, RecipeImgPipe, MarkdownPipe, ConfirmComponent, WaitingComponent, SearchComponent],
+    exports: [
+        FirstPipe,
+        RecipeImgPipe,
+        MarkdownPipe,
+        WaitingComponent,
+        SearchComponent,
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatBottomSheetModule,
+        MatProgressSpinnerModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        OverlayModule,
+    ],
+    providers: [
+        ConfirmService,
+        SearchService,
+    ]
 })
 export class SharedModule { }

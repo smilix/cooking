@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, Injectable, OnInit, ViewChild} fro
 import {CategoriesQuery} from '../../book/categories/state/categories.query';
 import {RecipesQuery} from '../../book/recipes/state/recipes.query';
 import {combineLatest, Observable} from 'rxjs';
-import {FormBuilder} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {filter, map, startWith, tap} from 'rxjs/operators';
 import {CategoriesService} from '../../book/categories/state/categories.service';
 import {RecipesService} from '../../book/recipes/state/recipes.service';
@@ -51,7 +51,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   searchInput!: ElementRef<MatInput>;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private router: Router,
     private categoriesQuery: CategoriesQuery,
     private recipesQuery: RecipesQuery,

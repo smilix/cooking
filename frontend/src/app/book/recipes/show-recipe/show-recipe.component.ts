@@ -4,7 +4,7 @@ import {RecipesService} from '../state/recipes.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {finalize, switchMap} from 'rxjs/operators';
 import {Recipe} from '../state/recipe.model';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {combineLatest, of} from 'rxjs';
 import {CategoriesService} from '../../categories/state/categories.service';
 import {CategoriesQuery} from '../../categories/state/categories.query';
@@ -25,13 +25,13 @@ export class ShowRecipeComponent implements OnInit {
   newMode = false;
   uploading = false;
   sourceIsLink = false;
-  form: FormGroup | null = null;
+  form: UntypedFormGroup | null = null;
 
   constructor(
     private viewportScroller: ViewportScroller,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     public categoriesQuery: CategoriesQuery,
     private categoriesService: CategoriesService,
     private recipesQuery: RecipesQuery,

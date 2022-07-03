@@ -8,7 +8,7 @@ import {combineLatest, of} from 'rxjs';
 import {Category} from '../state/category.model';
 import {Recipe} from '../../recipes/state/recipe.model';
 import {CategoriesQuery} from '../state/categories.query';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmService} from '../../../shared/confirm/confirm.component';
 
 @Component({
@@ -22,11 +22,11 @@ export class ShowCategoryComponent implements OnInit {
   recipes: Recipe[] = [];
 
   mode: 'EDIT' | 'NEW' | 'MARKED' = 'EDIT';
-  form: FormGroup | null = null;
+  form: UntypedFormGroup | null = null;
 
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private categoriesService: CategoriesService,
