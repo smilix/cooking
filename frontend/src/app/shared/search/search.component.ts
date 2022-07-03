@@ -8,9 +8,9 @@ import {CategoriesService} from '../../book/categories/state/categories.service'
 import {RecipesService} from '../../book/recipes/state/recipes.service';
 import {Overlay} from '@angular/cdk/overlay';
 import {ComponentPortal} from '@angular/cdk/portal';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete/autocomplete';
 import {Router} from '@angular/router';
 import {MatInput} from '@angular/material/input';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 interface SearchRecipe {
   id: number;
