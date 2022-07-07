@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRippleModule} from '@angular/material/core';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatMenuModule} from '@angular/material/menu';
 
 const routes: Routes = [
   {path: '', component: ListCategoriesComponent},
@@ -42,6 +43,7 @@ const routes: Routes = [
     MatSelectModule,
     MatRippleModule,
     DragDropModule,
+    MatMenuModule,
   ]
 })
 export class BookModule {

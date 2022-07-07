@@ -44,13 +44,30 @@
       </ng-container>
 
       <div class="edit-footer">
-        <div class="upload-button">
-          <input #fileInput type="file" (change)="startUpload(fileInput)" accept="image/*" capture>
-          <button mat-button (click)="fileInput.click()">
-            <mat-icon>photo_camera</mat-icon>
-            Foto hochladen
-          </button>
-        </div>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>image</mat-icon>
+          Bild ändern
+        </button>
+
+        <mat-menu #menu="matMenu" yPosition="above">
+          <div class="upload-button">
+            <input #fileInputCamera type="file" (change)="startUpload(fileInputCamera)" accept="image/*" capture>
+            <button mat-button (click)="fileInputCamera.click()">
+              <mat-icon>photo_camera</mat-icon>
+              Kamera
+            </button>
+          </div>
+
+          <div class="upload-button">
+            <input #fileInputImage type="file" (change)="startUpload(fileInputImage)">
+            <button mat-button (click)="fileInputImage.click()">
+              <mat-icon>file_upload</mat-icon>
+                Bild auswählen
+            </button>
+          </div>
+        </mat-menu>
+
+
         <span class="spacer"></span>
         <button mat-button color="warn" (click)="delete()">
           <mat-icon>delete</mat-icon>
